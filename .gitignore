@@ -1,0 +1,4 @@
+print_all_tmpdir
+getenv_tmpdir
+start_with_dup_vars
+*.dSYM
