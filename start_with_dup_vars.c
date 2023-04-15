@@ -12,15 +12,24 @@ int run(const char *program, const char *message, char **new_env);
 int main(int argc, char **argv)
 {
     create_new_env();
+    printf("\033[1;35m============== C ====================\033[0m\n");
     run("print_all_tmpdir",         "",                                    new_env);
-    run("print_tmpdir.py",          "print(os.environ['TMPDIR'])",         new_env);
-    run("echo_tmpdir.sh",           "echo $TMPDIR",                        new_env);
     run("getenv_tmpdir",            "getenv(\"TMPDIR\")",                  new_env);
+    printf("\033[1;35m============== BASH ====================\033[0m\n");
+    run("echo_tmpdir.sh",           "echo $TMPDIR",                        new_env);
     run("run_print_all_tmpdir.sh",  "calling print_all_tmpdir",            new_env);
     run("exec_print_all_tmpdir.sh", "exec-ing print_all_tmpdir",           new_env);
     run("env_grep_tmpdir.sh",       "env | grep tmpdir",                   new_env);
+    printf("\033[1;35m============== PYTHON ====================\033[0m\n");
+    run("print_tmpdir.py",          "print(os.environ['TMPDIR'])",         new_env);
     run("run_env.py",               "subprocess.run('/usr/bin/env')",      new_env);
     run("run_print_all_tmpdir.py",  "subprocess.run('./print_all_tmpdir'", new_env);
+    printf("\033[1;35m============== GO ====================\033[0m\n");
+    run("go_print_all_tmpdir",      "for _, v in os.Environ() {...}",      new_env);
+    run("go_getenv_tmpdir",         "os.Getenv(\"TMPDIR\")",               new_env);
+    printf("\033[1;35m============== RUST ====================\033[0m\n");
+    run("rust_print_all_tmpdir",    "for (k, v) in std::env::vars() {...}",new_env);
+    run("rust_getenv_tmpdir",       "std::env::var(\"TMPDIR\")",           new_env);
     // run("./infinite_loop.sh", "Infinite loop for inspection with htop", new_env);
 
     return 0;

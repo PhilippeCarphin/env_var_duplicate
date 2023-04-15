@@ -2,3 +2,7 @@ print_all_tmpdir
 getenv_tmpdir
 start_with_dup_vars
 *.dSYM
+rust_getenv_tmpdir
+rust_print_all_tmpdir
+go_getenv_tmpdir
+go_print_all_tmpdir
