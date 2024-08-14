@@ -181,6 +181,10 @@ For getenv:
 - [`os.Getenv()`](https://cs.opensource.google/go/go/+/master:src/os/env.go;l=101;bpv=0;bpt=0): Delegates to `syscall.Getenv`.
 - [`syscall.Getenv()`](https://cs.opensource.google/go/go/+/refs/heads/master:src/syscall/env_unix.go;drc=f58c6cccc44752146aabcd50a30865e34817a4b4;bpv=0;bpt=0;l=69): This function ensures `syscall.copyenv()` has been called and iterates
 
+Note: In newer version of the exec package, environment deduplication is done
+so that we don't can't get duplicate environment variables anymore if the
+gitlab runner is compiled with newer versions ([`os/exec.go`](https://github.com/golang/go/blob/master/src/os/exec/exec.go#L1225)).
+
 ## Rust
 
 TODO: Find the rust code for the std::env package.
